@@ -22,3 +22,10 @@ const observer = new IntersectionObserver((entries) => {
 });
 
 faders.forEach((el) => observer.observe(el));
+// Mobile menu toggle
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.getElementById("nav-links");
+
+menuToggle.onclick = () => {
+    navLinks.classList.toggle("show");
+};
