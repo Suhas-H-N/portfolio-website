@@ -259,3 +259,23 @@ h2 {
 .contact-form button:hover {
     transform: scale(1.05);
 }
+
+/* ===== RESUME BUTTON ===== */
+
+.resume-btn {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 18px;
+    background: transparent;
+    border: 2px solid var(--accent);
+    color: var(--text);
+    border-radius: 25px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.resume-btn:hover {
+    background: var(--accent);
+    color: white;
+}
+
