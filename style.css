@@ -1,4 +1,4 @@
-/* Reset default margin */
+/* Reset */
 * {
     margin: 0;
     padding: 0;
@@ -6,19 +6,41 @@
     font-family: Arial, sans-serif;
 }
 
-/* Gradient background */
+/* Background */
 body {
     background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
+}
+
+/* Sections */
+section {
+    padding: 80px 20px;
     text-align: center;
 }
 
-/* Section spacing */
-section {
-    padding: 60px 20px;
+/* HERO LAYOUT */
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
 }
 
-/* HERO section */
+/* Profile Image */
+.profile-img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid white;
+}
+
+/* Hero Text */
+.hero-text {
+    text-align: left;
+}
+
 .hero h1 {
     font-size: 48px;
     margin-bottom: 10px;
@@ -30,7 +52,7 @@ section {
 }
 
 .hero button {
-    padding: 10px 20px;
+    padding: 12px 25px;
     border: none;
     background: white;
     color: #764ba2;
@@ -41,10 +63,10 @@ section {
 }
 
 .hero button:hover {
-    background: #eee;
+    transform: scale(1.05);
 }
 
-/* Skills list */
+/* Skills */
 .skills ul {
     list-style: none;
 }
@@ -58,20 +80,4 @@ section {
 h2 {
     margin-bottom: 20px;
     font-size: 32px;
-}
-
-.hero-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.profile-img {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid white;
-    margin-bottom: 20px;
 }
