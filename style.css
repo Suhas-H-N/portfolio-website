@@ -174,3 +174,43 @@ h2 {
     text-decoration: none;
     border-radius: 8px;
 }
+
+/* ===== PROJECT SECTION UPGRADE ===== */
+
+/* Project container */
+.project-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+/* Project card */
+.project-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    padding: 25px;
+    border-radius: 18px;
+    width: 280px;
+    text-align: center;
+    transition: 0.35s ease;
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* Hover effect */
+.project-card:hover {
+    transform: translateY(-10px) scale(1.04);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+}
+
+/* Project button */
+.project-card a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 18px;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+}
