@@ -1,11 +1,24 @@
+// Theme toggle
 const toggle = document.getElementById("theme-toggle");
 
-toggle.onclick = () => {
-    document.body.classList.toggle("light");
+if (toggle) {
+    toggle.onclick = () => {
+        document.body.classList.toggle("light");
+        toggle.textContent = document.body.classList.contains("light") ? "☀️" : "🌙";
+    };
+}
 
-    if (document.body.classList.contains("light")) {
-        toggle.textContent = "☀️";
-    } else {
-        toggle.textContent = "🌙";
-    }
-};
+// Scroll fade-in animation
+const faders = document.querySelectorAll(".fade-in");
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+    });
+}, {
+    threshold: 0.2
+});
+
+faders.forEach((el) => observer.observe(el));
