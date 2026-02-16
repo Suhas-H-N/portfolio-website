@@ -140,3 +140,37 @@ h2 {
     font-size: 32px;
     margin-bottom: 20px;
 }
+
+/* Project container */
+.project-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+/* Project card */
+.project-card {
+    background: var(--card);
+    padding: 20px;
+    border-radius: 15px;
+    width: 260px;
+    transition: 0.3s;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Hover animation */
+.project-card:hover {
+    transform: translateY(-8px) scale(1.03);
+}
+
+/* Button */
+.project-card a {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px 14px;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+}
