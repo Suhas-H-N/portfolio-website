@@ -29,3 +29,18 @@ const navLinks = document.getElementById("nav-links");
 menuToggle.onclick = () => {
     navLinks.classList.toggle("show");
 };
+// Send email using EmailJS
+document.getElementById("contact-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    emailjs.sendForm(
+        "service_mf8cz8k",
+        "template_5w1lm6f",
+        this
+    ).then(() => {
+        alert("Message sent successfully!");
+        this.reset();
+    }, () => {
+        alert("Failed to send message. Try again.");
+    });
+});
