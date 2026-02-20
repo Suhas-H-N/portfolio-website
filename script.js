@@ -114,3 +114,51 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         navLinks.classList.remove('show'); // Close mobile menu
     });
 });
+// ADMIN LOGIN
+const adminBtn = document.getElementById('admin-login');
+const modal = document.getElementById('login-modal');
+const closeBtn = document.querySelector('.close');
+const adminForm = document.getElementById('admin-form');
+const adminDashboard = document.getElementById('admin-dashboard');
+const logoutBtn = document.getElementById('logout-btn');
+
+const ADMIN_CREDENTIALS = {
+    username: 'admin',
+    password: 'suhas123'
+};
+
+adminBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    modal.style.display = 'block';
+});
+
+closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+});
+
+window.addEventListener('click', (e) => {
+    if (e.target === modal) modal.style.display = 'none';
+});
+
+adminForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    
+    if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
+        modal.style.display = 'none';
+        adminDashboard.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.getElementById('login-error').style.display = 'block';
+        setTimeout(() => {
+            document.getElementById('login-error').style.display = 'none';
+        }, 3000);
+    }
+});
+
+logoutBtn.addEventListener('click', () => {
+    adminDashboard.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    adminForm.reset();
+});
