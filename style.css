@@ -1,13 +1,22 @@
 :root {
-    --bg: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-    --card: rgba(26, 26, 46, 0.95);
-    --glass: rgba(255, 255, 255, 0.08);
+    --bg: #000000;                    /* Pure BLACK */
+    --card: rgba(20, 20, 20, 0.95);   /* Dark gray glass */
+    --glass: rgba(255, 255, 255, 0.05);
     --text: #f8fafc;
     --text-dark: #1a1a2e;
     --accent: linear-gradient(135deg, #ff6b35, #f7931e);
     --accent-glow: rgba(255, 107, 53, 0.3);
-    --shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    --shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
 }
+
+body.light {
+    --bg: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 50%, #ffcc80 100%);
+    --card: rgba(255, 243, 224, 0.98);
+    --glass: rgba(255, 255, 255, 0.9);
+    --text: #1a1a2e;
+    --shadow: 0 15px 35px rgba(255, 107, 53, 0.15);
+}
+
 
 body.light {
     --bg: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 50%, #ffcc80 100%);
