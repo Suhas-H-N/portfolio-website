@@ -1,164 +1,197 @@
-// Theme Toggle with Persistence
-const themeToggle = document.getElementById('theme-toggle');
-const body = document.body;
+// 1. SCROLL PROGRESS
+const scrollProgress = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+    const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+    scrollProgress.style.width = pct + '%';
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+    highlightNav();
+});
 
-const currentTheme = localStorage.getItem('theme') || 'dark';
-if (currentTheme === 'light') {
-    body.classList.add('light');
-    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+// 2. ACTIVE NAV
+function highlightNav() {
+    let current = '';
+    document.querySelectorAll('section[id]').forEach(sec => {
+        if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+    });
+    document.querySelectorAll('.nav-links a').forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === `#${current}`);
+    });
 }
 
-themeToggle.addEventListener('click', () => {
-    body.classList.toggle('light');
-    const isLight = body.classList.contains('light');
-    themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-});
-
-// Mobile Menu
-const menuToggle = document.getElementById('menu-toggle');
-const navLinks = document.getElementById('nav-links');
-
+// 3. MOBILE MENU
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
 menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('show');
+    navLinks.classList.toggle('open');
+    const icon = menuToggle.querySelector('i');
+    icon.classList.toggle('fa-bars');
+    icon.classList.toggle('fa-times');
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    menuToggle.querySelector('i').className = 'fas fa-bars';
+}));
+
+// 4. THEME TOGGLE
+const themeToggle = document.getElementById('themeToggle');
+let isDark = localStorage.getItem('theme') !== 'light';
+if (!isDark) { document.body.classList.add('light'); themeToggle.innerHTML = '<i class="fas fa-sun"></i>'; }
+themeToggle.addEventListener('click', () => {
+    isDark = !isDark;
+    document.body.classList.toggle('light', !isDark);
+    themeToggle.innerHTML = isDark ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
 });
 
-// Scroll Progress
-window.addEventListener('scroll', () => {
-    const scrollTop = window.pageYOffset;
-    const docHeight = document.body.offsetHeight - window.innerHeight;
-    const progress = (scrollTop / docHeight) * 100;
-    document.querySelector('.scroll-progress').style.width = progress + '%';
-});
+// 5. FADE IN ON SCROLL
+const fadeObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); fadeObs.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-in').forEach(el => fadeObs.observe(el));
 
-// Fade-in Observer
-const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('show');
+// 6. SKILL BARS
+const skillObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.querySelectorAll('.bar-fill').forEach(b => setTimeout(() => b.style.width = b.dataset.width + '%', 100));
+            skillObs.unobserve(e.target);
         }
     });
-}, observerOptions);
+}, { threshold: 0.3 });
+document.querySelectorAll('.skill-category').forEach(el => skillObs.observe(el));
 
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-// Skills Progress Bars
-const animateSkills = () => {
-    document.querySelectorAll('.progress').forEach(bar => {
-        const width = bar.getAttribute('data-width');
-        setTimeout(() => bar.style.width = width + '%', 500);
+// 7. COUNTER ANIMATION
+function animateCounter(el) {
+    const target = parseInt(el.dataset.target);
+    let current = 0;
+    const inc = target / (1600 / 16);
+    const timer = setInterval(() => {
+        current += inc;
+        if (current >= target) { current = target; clearInterval(timer); }
+        el.textContent = Math.floor(current);
+    }, 16);
+}
+const countObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.querySelectorAll('.stat-number[data-target]').forEach(animateCounter);
+            countObs.unobserve(e.target);
+        }
     });
-};
+}, { threshold: 0.4 });
+const aboutSection = document.querySelector('.about');
+if (aboutSection) countObs.observe(aboutSection);
 
-window.addEventListener('scroll', () => {
-    if (document.getElementById('skills').getBoundingClientRect().top < window.innerHeight) {
-        animateSkills();
-    }
-});
-
-// Project Filters
-const filterBtns = document.querySelectorAll('.filter-btn');
-const projectCards = document.querySelectorAll('.project-card');
-
-filterBtns.forEach(btn => {
+// 8. PROJECT FILTER
+document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         const filter = btn.dataset.filter;
-
-        projectCards.forEach(card => {
-            if (filter === 'all' || card.dataset.category === filter) {
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
-                card.classList.add('visible');
-            } else {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                card.classList.remove('visible');
-            }
+        document.querySelectorAll('.project-card').forEach(card => {
+            const show = filter === 'all' || card.dataset.category === filter;
+            if (show) { card.style.display = ''; setTimeout(() => card.style.opacity = '1', 10); }
+            else { card.style.opacity = '0'; setTimeout(() => card.style.display = 'none', 300); }
         });
     });
 });
 
-// Email Form
-const form = document.getElementById('contact-form');
-const loader = document.getElementById('loader');
-
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    loader.style.display = 'inline-block';
-    form.querySelector('button').disabled = true;
-
-    emailjs.sendForm('service_mf8cz8k', 'template_5w1lm6f', form)
-        .then(() => {
-            alert('Message sent! 🚀');
-            form.reset();
-        })
-        .catch(error => {
-            alert('Oops! Try again.');
-            console.error('EmailJS:', error);
-        })
-        .finally(() => {
-            loader.style.display = 'none';
-            form.querySelector('button').disabled = false;
-        });
-});
-
-// Smooth Scroll for Nav Links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', (e) => {
+// 9. CONTACT FORM
+const contactForm = document.getElementById('contactForm');
+const submitBtn = document.getElementById('submitBtn');
+const formStatus = document.getElementById('formStatus');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        const target = document.querySelector(anchor.getAttribute('href'));
-        target.scrollIntoView({ behavior: 'smooth' });
-        navLinks.classList.remove('show'); // Close mobile menu
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        formStatus.textContent = '';
+        formStatus.className = 'form-status';
+        // Replace 'SERVICE_ID' and 'TEMPLATE_ID' with your EmailJS IDs
+        emailjs.sendForm('SERVICE_ID', 'TEMPLATE_ID', this)
+            .then(() => {
+                submitBtn.innerHTML = '<i class="fas fa-check"></i> Sent!';
+                formStatus.textContent = '✅ Message sent! I\'ll get back to you soon.';
+                formStatus.classList.add('success');
+                contactForm.reset();
+                setTimeout(() => { submitBtn.disabled = false; submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message'; }, 4000);
+            })
+            .catch(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                formStatus.textContent = '❌ Failed to send. Try emailing directly.';
+                formStatus.classList.add('error');
+            });
     });
-});
-// ADMIN LOGIN
-const adminBtn = document.getElementById('admin-login');
-const modal = document.getElementById('login-modal');
-const closeBtn = document.querySelector('.close');
-const adminForm = document.getElementById('admin-form');
-const adminDashboard = document.getElementById('admin-dashboard');
-const logoutBtn = document.getElementById('logout-btn');
+}
 
-const ADMIN_CREDENTIALS = {
-    username: 'admin',
-    password: 'suhas123'
-};
+// 10. ADMIN MODAL
+const loginModal = document.getElementById('loginModal');
+document.getElementById('adminLogin').addEventListener('click', e => { e.preventDefault(); loginModal.classList.add('open'); });
+document.getElementById('modalClose').addEventListener('click', () => loginModal.classList.remove('open'));
+loginModal.addEventListener('click', e => { if (e.target === loginModal) loginModal.classList.remove('open'); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') loginModal.classList.remove('open'); });
 
-adminBtn.addEventListener('click', (e) => {
+document.getElementById('adminForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    modal.style.display = 'block';
-});
-
-closeBtn.addEventListener('click', () => {
-    modal.style.display = 'none';
-});
-
-window.addEventListener('click', (e) => {
-    if (e.target === modal) modal.style.display = 'none';
-});
-
-adminForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-    
-    if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
-        modal.style.display = 'none';
-        adminDashboard.style.display = 'flex';
+    const u = document.getElementById('adminUser').value.trim();
+    const p = document.getElementById('adminPass').value;
+    const err = document.getElementById('loginError');
+    // Change 'admin' and 'admin123' to your own credentials
+    if (u === 'admin' && p === 'admin123') {
+        loginModal.classList.remove('open');
+        document.getElementById('adminDashboard').style.display = 'block';
         document.body.style.overflow = 'hidden';
     } else {
-        document.getElementById('login-error').style.display = 'block';
-        setTimeout(() => {
-            document.getElementById('login-error').style.display = 'none';
-        }, 3000);
+        err.style.display = 'block';
     }
 });
 
-logoutBtn.addEventListener('click', () => {
-    adminDashboard.style.display = 'none';
-    document.body.style.overflow = 'auto';
-    adminForm.reset();
+document.getElementById('logoutBtn').addEventListener('click', () => {
+    document.getElementById('adminDashboard').style.display = 'none';
+    document.body.style.overflow = '';
 });
+
+// 11. SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) { e.preventDefault(); window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' }); }
+    });
+});
+
+// 12. TYPING EFFECT
+const roles = ['Full-Stack Developer', 'AI/ML Enthusiast', 'Python Developer', 'Open Source Contributor'];
+let rIdx = 0, cIdx = 0, deleting = false;
+const typingEl = document.createElement('span');
+typingEl.style.cssText = 'display:block;font-size:1rem;color:var(--accent);font-weight:500;margin-top:-8px;margin-bottom:18px;min-height:24px;letter-spacing:0.5px;';
+const heroH1 = document.querySelector('.hero-text h1');
+if (heroH1) {
+    heroH1.insertAdjacentElement('afterend', typingEl);
+    function type() {
+        const curr = roles[rIdx];
+        typingEl.textContent = deleting ? curr.substring(0, cIdx - 1) : curr.substring(0, cIdx + 1);
+        deleting ? cIdx-- : cIdx++;
+        let delay = deleting ? 50 : 90;
+        if (!deleting && cIdx === curr.length) { delay = 2000; deleting = true; }
+        else if (deleting && cIdx === 0) { deleting = false; rIdx = (rIdx + 1) % roles.length; delay = 400; }
+        setTimeout(type, delay);
+    }
+    setTimeout(type, 1000);
+}
+
+// 13. CUSTOM CURSOR
+if (window.matchMedia('(pointer: fine)').matches) {
+    const cursor = document.createElement('div');
+    cursor.style.cssText = 'position:fixed;width:8px;height:8px;background:#6c63ff;border-radius:50%;pointer-events:none;z-index:99999;transition:transform 0.15s ease,opacity 0.2s ease;transform:translate(-50%,-50%);mix-blend-mode:difference;';
+    document.body.appendChild(cursor);
+    document.addEventListener('mousemove', e => { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; });
+    document.querySelectorAll('a,button,.project-card,.filter-btn').forEach(el => {
+        el.addEventListener('mouseenter', () => { cursor.style.transform = 'translate(-50%,-50%) scale(3)'; cursor.style.opacity = '0.5'; });
+        el.addEventListener('mouseleave', () => { cursor.style.transform = 'translate(-50%,-50%) scale(1)'; cursor.style.opacity = '1'; });
+    });
+}
+
+// 14. PAGE LOAD FADE
+document.body.style.cssText += 'opacity:0;transition:opacity 0.5s ease;';
+window.addEventListener('load', () => document.body.style.opacity = '1');
