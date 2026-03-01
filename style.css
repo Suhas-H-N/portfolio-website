@@ -234,3 +234,18 @@ textarea.form-control { resize: vertical; min-height: 130px; }
     .hero-img { width: 190px; height: 190px; }
     .about-stats { grid-template-columns: 1fr; gap: 12px; }
 }
+/* ===== GITHUB STATS ===== */
+
+.github-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.github-container img {
+    width: 350px;
+    max-width: 100%;
+    border-radius: 12px;
+}
