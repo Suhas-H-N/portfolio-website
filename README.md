@@ -27,4 +27,4 @@ If you like this project, give it a ⭐ on GitHub!
 ## 🧠 Author
 
 **Suhas H N**  
-💻 Aspiring Software Developer
+💻 Comuter Science and Engineering Student | Aspiring Software Developer
