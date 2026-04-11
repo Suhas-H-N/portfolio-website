@@ -1,30 +1,63 @@
-# 👨‍💻 Suhas H N Portfolio Website
+# 👨‍💻 Suhas H N — Portfolio Website
 
-🚀 A modern and responsive personal portfolio website built using HTML, CSS, and JavaScript.
+🚀 A modern, responsive, and interactive personal portfolio showcasing my projects, skills, and experience.
 
 ## 🌐 Live Demo
 🔗 https://Suhas-H-N.github.io/portfolio-website/
+
+---
 
 ## ✨ Features
 
 - 🌙 Dark / Light Mode Toggle  
 - 📱 Fully Responsive Design  
-- ⚡ Smooth Scroll Animations  
+- ⚡ Smooth Animations & Micro-interactions  
 - 📊 GitHub Stats Integration  
-- 📩 Contact Form (EmailJS)  
+- 📩 Contact Form (EmailJS Integration)  
 - 📄 Resume Download  
+- 🎯 Project Filtering System  
+
+---
 
 ## 🛠️ Tech Stack
 
-![HTML](https://img.shields.io/badge/HTML-5-orange?logo=html5)
-![CSS](https://img.shields.io/badge/CSS-3-blue?logo=css3)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow?logo=javascript)
+- HTML5  
+- CSS3 (Modern UI + Animations)  
+- JavaScript (ES6+)  
 
-## ⭐ Show your support
+---
 
-If you like this project, give it a ⭐ on GitHub!
+## 📂 Project Structure
 
-## 🧠 Author
+portfolio-website/
+│── index.html
+│── style.css
+│── script.js
+│── assets/
+│── images/
 
-**Suhas H N**  
-💻 Comuter Science and Engineering Student | Aspiring Software Developer
+
+---
+
+## 🚀 Getting Started
+
+1. Clone the repository:
+```bash
+git clone https://github.com/Suhas-H-N/portfolio-website.git
+
+2. Open in browser:
+index.html
+
+3. 📩 Contact:
+Feel free to reach out:
+📧 Email: suhassuhas3335@gmail.com
+💼 LinkedIn: https://www.linkedin.com/in/suhas-h-n-987a4328a/
+🐙 GitHub: https://github.com/Suhas-H-N
+
+4. ⭐ Support:
+If you like this project, consider giving it a ⭐ on GitHub!
+
+5. 🧠 Author:
+Suhas H N
+💻 Computer Science Engineering Student
+🚀 Aspiring Full Stack & AI Developer
