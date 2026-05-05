@@ -3,182 +3,721 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suhas H N | Portfolio</title>
+    <meta name="description" content="Suhas H N — CS Student & Aspiring Software Developer. Full-stack, AI/ML, Python. Bengaluru, India.">
+    <meta name="keywords" content="Suhas H N, portfolio, software developer, full stack, AI ML, Python, React, VTU">
+    <meta property="og:title" content="Suhas H N | Portfolio">
+    <meta property="og:description" content="CS Student & Aspiring Software Developer from Bengaluru">
+    <meta property="og:type" content="website">
+    <title>Suhas H N | CS Student & Software Developer</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="styles.css">
-
-    <!-- Font Awesome (FIXED) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <!-- EmailJS -->
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-
-    <script>
-        (function(){
-            emailjs.init("YOUR_PUBLIC_KEY"); // 🔥 Replace with your key
-        })();
-    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<!-- ================= NAVBAR ================= -->
-<header>
-    <nav class="navbar">
-        <h2 class="logo">Suhas</h2>
+<!-- Scroll progress bar -->
+<div class="scroll-progress" id="scrollProgress"></div>
 
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+<!-- Back to top -->
+<button class="back-to-top" id="backToTop" title="Back to top" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+</button>
 
-        <div class="menu-toggle" id="menuToggle">
-            <i class="fas fa-bars"></i>
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+    <div class="nav-brand"><i class="fas fa-code"></i> SUHAS H N</div>
+    <div class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></div>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+        <li><a href="#experience"><i class="fas fa-briefcase"></i> Experience</a></li>
+        <li><a href="#skills"><i class="fas fa-tools"></i> Skills</a></li>
+        <li><a href="#projects"><i class="fas fa-layer-group"></i> Projects</a></li>
+        <li><a href="#education"><i class="fas fa-graduation-cap"></i> Education</a></li>
+        <li><a href="#github"><i class="fab fa-github"></i> GitHub</a></li>
+        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+        <li class="nav-dropdown">
+            <a href="#" id="quickActions"><i class="fas fa-rocket"></i> Quick Actions <i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu" id="dropdownMenu">
+                <li><a href="assets/resume.pdf" download><i class="fas fa-download"></i> Download Resume</a></li>
+                <li><a href="#projects"><i class="fas fa-layer-group"></i> Latest Projects</a></li>
+                <li><a href="mailto:suhassuhas3335@gmail.com?subject=Internship%20Opportunity"><i class="fas fa-envelope"></i> Email Me</a></li>
+                <li><a href="https://github.com/Suhas-H-N?tab=repositories" target="_blank"><i class="fab fa-github"></i> View All Repos</a></li>
+            </ul>
+        </li>
+        <li><a href="#" id="adminLogin"><i class="fas fa-cog"></i></a></li>
+    </ul>
+    <button id="themeToggle" class="theme-btn" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="hero-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+    <div class="hero-inner">
+        <div class="hero-text">
+            <div class="hero-badge">
+                <div class="badge-dot"></div>
+                Available for internships &amp; collab
+            </div>
+            <h1>Hi, I'm<br><span class="gradient-text">Suhas H N</span></h1>
+            <p class="hero-desc">Computer Science &amp; Engineering student at VTU, Bengaluru. Building full-stack apps, AI/ML tools, and everything in between.</p>
+            <div class="hero-buttons">
+                <a href="assets/resume.pdf" download class="btn-primary">
+                    <i class="fas fa-download"></i> Download Resume
+                </a>
+                <a href="#projects" class="btn-secondary"><i class="fas fa-arrow-right"></i> View Projects</a>
+            </div>
+            <div class="hero-socials">
+                <span>Find me on</span>
+                <a href="https://github.com/Suhas-H-N" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/suhas-h-n-987a432a/" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="mailto:suhassuhas3335@gmail.com" class="social-icon" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+            <div class="live-status">
+                <div class="status-dot online"></div>
+                <span>Live &amp; Online</span>
+                <small>Last updated: <span id="lastUpdate"></span></small>
+            </div>
         </div>
-    </nav>
-</header>
-
-<!-- ================= HOME ================= -->
-<section id="home" class="section">
-    <h1>Hello, I'm <span>Suhas H N</span></h1>
-    <p>AI Developer | Web Developer</p>
-</section>
-
-<!-- ================= ABOUT ================= -->
-<section id="about" class="section">
-    <h2>About Me</h2>
-    <p>I am passionate about building AI and web applications.</p>
-</section>
-
-<!-- ================= SKILLS ================= -->
-<section id="skills" class="section">
-    <h2>Skills</h2>
-
-    <div class="skill">
-        <p>HTML</p>
-        <div class="bar">
-            <div class="bar-fill" data-width="90"></div>
+        <div class="hero-img-wrap">
+            <div class="hero-img-ring"></div>
+            <div class="hero-img">
+                <img src="images/profile.png" alt="Suhas H N" loading="eager"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <div class="img-fallback">SH</div>
+            </div>
+            <div class="float-chip chip-1"><i class="fab fa-python"></i> Python</div>
+            <div class="float-chip chip-2"><i class="fas fa-brain"></i> AI/ML</div>
+            <div class="float-chip chip-3"><i class="fab fa-react"></i> React</div>
         </div>
     </div>
+    <a href="#about" class="scroll-hint" aria-label="Scroll down"><i class="fas fa-chevron-down"></i></a>
+</section>
 
-    <div class="skill">
-        <p>CSS</p>
-        <div class="bar">
-            <div class="bar-fill" data-width="85"></div>
-        </div>
-    </div>
-
-    <div class="skill">
-        <p>JavaScript</p>
-        <div class="bar">
-            <div class="bar-fill" data-width="80"></div>
+<!-- ABOUT -->
+<section class="about fade-in" id="about">
+    <div class="section-inner">
+        <div class="section-label">Who I am</div>
+        <h2 class="section-title">About Me</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>Passionate Computer Science student from Bengaluru, diving deep into full-stack web development, AI/ML projects, and 3D image processing. I love turning complex ideas into clean, functional code.</p>
+                <p>Currently in my final year at VTU. Recently built a FastAPI drag-drop 3D image maker and a full-stack Notes App. Always hunting internships and open to cool collaborations!</p>
+                <p>When I'm not coding, you'll find me exploring open-source projects, brushing up on DSA, or contributing on GitHub.</p>
+                <a href="assets/resume.pdf" download class="btn-primary" style="margin-top:18px;display:inline-flex;"><i class="fas fa-file-alt"></i> Download Resume</a>
+            </div>
+            <div class="about-right">
+                <div class="about-stats">
+                    <div class="stat-box">
+                        <span class="stat-number" data-target="10">0</span><span class="stat-plus">+</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number" data-target="15">0</span><span class="stat-plus">+</span>
+                        <span class="stat-label">Skills</span>
+                    </div>
+                    <div class="stat-box">
+                        <a href="https://github.com/Suhas-H-N" target="_blank" rel="noopener">
+                            <span class="stat-number" data-target="50">0</span><span class="stat-plus">+</span>
+                            <span class="stat-label">GitHub Commits</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-row"><i class="fas fa-map-marker-alt"></i><span>Bengaluru, Karnataka, India</span></div>
+                    <div class="info-row"><i class="fas fa-university"></i><span>VTU — CSE Final Year</span></div>
+                    <div class="info-row"><i class="fas fa-code-branch"></i><span>Open to Internships</span></div>
+                    <div class="info-row"><i class="fas fa-language"></i><span>English · Kannada · Hindi</span></div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- ================= PROJECTS ================= -->
-<section id="projects" class="section">
-    <h2>Projects</h2>
+<!-- EXPERIENCE -->
+<section class="experience fade-in" id="experience">
+    <div class="section-inner">
+        <div class="section-label">What I've done</div>
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline">
 
-    <div class="filters">
-        <button class="filter-btn" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="web">Web</button>
-        <button class="filter-btn" data-filter="ai">AI</button>
-    </div>
+            <div class="timeline-item">
+                <div class="tl-dot"></div>
+                <div class="tl-card">
+                    <div class="tl-header">
+                        <div>
+                            <h3>Full-Stack Developer Intern</h3>
+                            <div class="tl-company">Tech Startup — Remote</div>
+                        </div>
+                        <span class="tl-date">Jan 2025 – Present</span>
+                    </div>
+                    <p>Built and maintained RESTful APIs using FastAPI and Python. Developed responsive front-end interfaces with React and TailwindCSS. Collaborated with the team using Git workflows and participated in code reviews.</p>
+                    <div class="tl-tags">
+                        <span>FastAPI</span><span>React</span><span>Python</span><span>PostgreSQL</span><span>Git</span>
+                    </div>
+                </div>
+            </div>
 
-    <div class="project-container">
-        <div class="project-card" data-category="web">
-            <h3>Portfolio Website</h3>
-            <p>Personal portfolio built using HTML, CSS, JS</p>
-        </div>
+            <div class="timeline-item">
+                <div class="tl-dot"></div>
+                <div class="tl-card">
+                    <div class="tl-header">
+                        <div>
+                            <h3>Open Source Contributor</h3>
+                            <div class="tl-company">GitHub — Community Projects</div>
+                        </div>
+                        <span class="tl-date">2024 – Present</span>
+                    </div>
+                    <p>Actively contributed to open-source Python and JavaScript projects. Raised PRs for bug fixes, documentation improvements, and feature enhancements. Engaged with maintainers and the broader developer community.</p>
+                    <div class="tl-tags">
+                        <span>Python</span><span>JavaScript</span><span>GitHub</span><span>Open Source</span>
+                    </div>
+                </div>
+            </div>
 
-        <div class="project-card" data-category="ai">
-            <h3>AI Project</h3>
-            <p>Machine learning based application</p>
+            <div class="timeline-item">
+                <div class="tl-dot"></div>
+                <div class="tl-card">
+                    <div class="tl-header">
+                        <div>
+                            <h3>Academic Project Lead</h3>
+                            <div class="tl-company">VTU — Final Year Project</div>
+                        </div>
+                        <span class="tl-date">Aug 2024 – Mar 2025</span>
+                    </div>
+                    <p>Led a team of 4 to design and implement a 3D image processing tool using FastAPI and Python. Integrated drag-and-drop UI, depth estimation models, and real-time preview. Presented to faculty and industry mentors.</p>
+                    <div class="tl-tags">
+                        <span>FastAPI</span><span>OpenCV</span><span>AI/ML</span><span>Team Lead</span><span>Python</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
 
-<!-- ================= CONTACT ================= -->
-<section id="contact" class="section">
-    <h2>Contact Me</h2>
+<!-- SKILLS -->
+<section class="skills fade-in" id="skills">
+    <div class="section-inner">
+        <div class="section-label">What I know</div>
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-grid">
 
-    <form id="contact-form">
-        <input type="text" name="from_name" placeholder="Your Name" required>
-        <input type="email" name="from_email" placeholder="Your Email" required>
-        <textarea name="message" placeholder="Your Message" required></textarea>
+            <div class="skill-category">
+                <div class="skill-cat-icon"><i class="fas fa-code"></i></div>
+                <h3>Languages</h3>
+                <div class="skill-bar">
+                    <div class="skill-meta"><span>Python</span><span>90%</span></div>
+                    <div class="bar-track"><div class="bar-fill" data-width="90"></div></div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-meta"><span>JavaScript</span><span>80%</span></div>
+                    <div class="bar-track"><div class="bar-fill" data-width="80"></div></div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-meta"><span>C / C++</span><span>70%</span></div>
+                    <div class="bar-track"><div class="bar-fill" data-width="70"></div></div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-meta"><span>SQL</span><span>75%</span></div>
+                    <div class="bar-track"><div class="bar-fill" data-width="75"></div></div>
+                </div>
+            </div>
 
-        <button type="submit" id="submitBtn">Send Message</button>
-        <p id="formStatus"></p>
-    </form>
+            <div class="skill-category">
+                <div class="skill-cat-icon"><i class="fas fa-layer-group"></i></div>
+                <h3>Frameworks &amp; Libraries</h3>
+                <div class="skill-bar">
+                    <div class="skill-meta"><span>FastAPI</span><span>85%</span></div>
+                    <div class="bar-track"><div class="bar-fill" data-width="85"></div></div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-meta"><span>React</span><span>78%</span></div>
+                    <div class="bar-track"><div class="bar-fill" data-width="78"></div></div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-meta"><span>Flask</span><span>72%</span></div>
+                    <div class="bar-track"><div class="bar-fill" data-width="72"></div></div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-meta"><span>NumPy / Pandas</span><span>80%</span></div>
+                    <div class="bar-track"><div class="bar-fill" data-width="80"></div></div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-cat-icon"><i class="fas fa-brain"></i></div>
+                <h3>AI / ML</h3>
+                <div class="skill-bar">
+                    <div class="skill-meta"><span>Machine Learning</span><span>75%</span></div>
+                    <div class="bar-track"><div class="bar-fill" data-width="75"></div></div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-meta"><span>OpenCV</span><span>70%</span></div>
+                    <div class="bar-track"><div class="bar-fill" data-width="70"></div></div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-meta"><span>TensorFlow / Keras</span><span>65%</span></div>
+                    <div class="bar-track"><div class="bar-fill" data-width="65"></div></div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-meta"><span>Scikit-learn</span><span>72%</span></div>
+                    <div class="bar-track"><div class="bar-fill" data-width="72"></div></div>
+                </div>
+            </div>
+
+        </div>
+        <div class="tech-cloud">
+            <span class="tech-pill"><i class="fab fa-git-alt"></i> Git</span>
+            <span class="tech-pill"><i class="fab fa-docker"></i> Docker</span>
+            <span class="tech-pill"><i class="fas fa-database"></i> PostgreSQL</span>
+            <span class="tech-pill"><i class="fas fa-database"></i> MongoDB</span>
+            <span class="tech-pill"><i class="fab fa-linux"></i> Linux</span>
+            <span class="tech-pill"><i class="fab fa-html5"></i> HTML5</span>
+            <span class="tech-pill"><i class="fab fa-css3-alt"></i> CSS3</span>
+            <span class="tech-pill"><i class="fas fa-server"></i> REST APIs</span>
+            <span class="tech-pill"><i class="fab fa-node-js"></i> Node.js</span>
+            <span class="tech-pill"><i class="fas fa-terminal"></i> Bash</span>
+        </div>
+    </div>
 </section>
 
-<!-- ================= FOOTER ================= -->
-<footer>
-    <p>© 2026 Suhas H N</p>
+<!-- PROJECTS -->
+<section class="projects fade-in" id="projects">
+    <div class="section-inner">
+        <div class="projects-header">
+            <div>
+                <div class="section-label">What I've built</div>
+                <h2 class="section-title">Projects</h2>
+            </div>
+            <div class="filter-group">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="ai">AI/ML</button>
+                <button class="filter-btn" data-filter="fullstack">Full-Stack</button>
+            </div>
+        </div>
+        <div class="projects-grid">
+
+            <div class="project-card" data-category="ai">
+                <div class="project-img">
+                    <div class="project-placeholder ai-placeholder" style="display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🧠</div>
+                    <div class="project-overlay">
+                        <a href="https://github.com/Suhas-H-N" target="_blank" class="overlay-btn"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="#" class="overlay-btn"><i class="fas fa-external-link-alt"></i> Demo</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-top">
+                        <h3>3D Image Maker</h3>
+                        <span class="card-tag ai">AI/ML</span>
+                    </div>
+                    <p>FastAPI-powered drag-and-drop tool that converts 2D images into 3D using depth estimation models. Features real-time preview and downloadable output.</p>
+                    <div class="tech-tags">
+                        <span>FastAPI</span><span>Python</span><span>OpenCV</span><span>HTML/CSS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="fullstack">
+                <div class="project-img">
+                    <div class="project-placeholder web-placeholder" style="display:flex;align-items:center;justify-content:center;font-size:3.5rem;">📝</div>
+                    <div class="project-overlay">
+                        <a href="https://github.com/Suhas-H-N" target="_blank" class="overlay-btn"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="#" class="overlay-btn"><i class="fas fa-external-link-alt"></i> Demo</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-top">
+                        <h3>Full-Stack Notes App</h3>
+                        <span class="card-tag fullstack">Full-Stack</span>
+                    </div>
+                    <p>Complete notes management app with user authentication, CRUD operations, and clean UI. React frontend with FastAPI backend and PostgreSQL database.</p>
+                    <div class="tech-tags">
+                        <span>React</span><span>FastAPI</span><span>PostgreSQL</span><span>JWT</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="web">
+                <div class="project-img">
+                    <div class="project-placeholder web-placeholder" style="display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🌐</div>
+                    <div class="project-overlay">
+                        <a href="https://github.com/Suhas-H-N" target="_blank" class="overlay-btn"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="#" class="overlay-btn"><i class="fas fa-external-link-alt"></i> Demo</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-top">
+                        <h3>Portfolio Website</h3>
+                        <span class="card-tag web">Web</span>
+                    </div>
+                    <p>This very portfolio — designed and built from scratch with dark/light theme, typing effects, scroll animations, admin dashboard, and EmailJS contact form.</p>
+                    <div class="tech-tags">
+                        <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>EmailJS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="ai">
+                <div class="project-img">
+                    <div class="project-placeholder ai-placeholder" style="display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🤖</div>
+                    <div class="project-overlay">
+                        <a href="https://github.com/Suhas-H-N" target="_blank" class="overlay-btn"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="#" class="overlay-btn"><i class="fas fa-external-link-alt"></i> Demo</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-top">
+                        <h3>ML Classifier</h3>
+                        <span class="card-tag ai">AI/ML</span>
+                    </div>
+                    <p>Machine learning classification project with Scikit-learn. Includes data preprocessing, model training, evaluation metrics, and a simple Flask web interface.</p>
+                    <div class="tech-tags">
+                        <span>Python</span><span>Scikit-learn</span><span>Pandas</span><span>Flask</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="fullstack">
+                <div class="project-img">
+                    <div class="project-placeholder web-placeholder" style="display:flex;align-items:center;justify-content:center;font-size:3.5rem;">🛒</div>
+                    <div class="project-overlay">
+                        <a href="https://github.com/Suhas-H-N" target="_blank" class="overlay-btn"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="#" class="overlay-btn"><i class="fas fa-external-link-alt"></i> Demo</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-top">
+                        <h3>E-Commerce API</h3>
+                        <span class="card-tag fullstack">Full-Stack</span>
+                    </div>
+                    <p>RESTful e-commerce backend with product management, user auth, cart, and order processing. Built with FastAPI and MongoDB with full Swagger documentation.</p>
+                    <div class="tech-tags">
+                        <span>FastAPI</span><span>MongoDB</span><span>Python</span><span>Docker</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="web">
+                <div class="project-img">
+                    <div class="project-placeholder web-placeholder" style="display:flex;align-items:center;justify-content:center;font-size:3.5rem;">📊</div>
+                    <div class="project-overlay">
+                        <a href="https://github.com/Suhas-H-N" target="_blank" class="overlay-btn"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="#" class="overlay-btn"><i class="fas fa-external-link-alt"></i> Demo</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-top">
+                        <h3>DSA Visualizer</h3>
+                        <span class="card-tag web">Web</span>
+                    </div>
+                    <p>Interactive data structures and algorithms visualizer in vanilla JS. Supports sorting algorithms, graph traversal, and tree operations with step-by-step animation.</p>
+                    <div class="tech-tags">
+                        <span>JavaScript</span><span>HTML5</span><span>CSS3</span><span>Canvas API</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="projects-cta">
+            <p>Want to see more? Check out all my repositories on GitHub.</p>
+            <a href="https://github.com/Suhas-H-N?tab=repositories" target="_blank" rel="noopener" class="btn-primary">
+                <i class="fab fa-github"></i> View All Projects
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="education fade-in" id="education">
+    <div class="section-inner">
+        <div class="section-label">My background</div>
+        <h2 class="section-title">Education</h2>
+        <div class="edu-grid">
+            <div class="edu-card">
+                <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+                <div class="edu-content">
+                    <div class="edu-degree">B.E. — Computer Science &amp; Engineering</div>
+                    <div class="edu-institution">Visvesvaraya Technological University (VTU)</div>
+                    <div class="edu-meta">
+                        <span><i class="fas fa-calendar-alt"></i> 2021 – 2025</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Bengaluru, India</span>
+                    </div>
+                    <div class="edu-desc">Final year CSE student with a focus on full-stack development, AI/ML, and algorithms. Participated in multiple hackathons and technical events throughout the degree.</div>
+                    <div class="edu-tags">
+                        <span>Data Structures</span><span>Algorithms</span><span>DBMS</span><span>OS</span><span>AI/ML</span>
+                    </div>
+                </div>
+            </div>
+            <div class="edu-card">
+                <div class="edu-icon"><i class="fas fa-school"></i></div>
+                <div class="edu-content">
+                    <div class="edu-degree">Pre-University (12th) — PCMB</div>
+                    <div class="edu-institution">Karnataka State Board</div>
+                    <div class="edu-meta">
+                        <span><i class="fas fa-calendar-alt"></i> 2019 – 2021</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Karnataka, India</span>
+                    </div>
+                    <div class="edu-desc">Completed pre-university education with Physics, Chemistry, Mathematics and Biology. Built a strong analytical and problem-solving foundation.</div>
+                    <div class="edu-tags">
+                        <span>Physics</span><span>Chemistry</span><span>Mathematics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cert-section">
+            <div class="cert-heading"><i class="fas fa-certificate"></i> Certifications</div>
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <div class="cert-icon" style="background:linear-gradient(135deg,#FF6B6B,#ee0979);"><i class="fab fa-python"></i></div>
+                    <div class="cert-body">
+                        <h4>Python for Everybody</h4>
+                        <span>Coursera — University of Michigan</span>
+                    </div>
+                    <span class="cert-badge">Completed</span>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);"><i class="fas fa-brain"></i></div>
+                    <div class="cert-body">
+                        <h4>Machine Learning Specialization</h4>
+                        <span>Coursera — Andrew Ng</span>
+                    </div>
+                    <span class="cert-badge">Completed</span>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon" style="background:linear-gradient(135deg,#43e97b,#38f9d7);"><i class="fas fa-code"></i></div>
+                    <div class="cert-body">
+                        <h4>Full-Stack Web Development</h4>
+                        <span>Udemy — Complete Bootcamp</span>
+                    </div>
+                    <span class="cert-badge">Completed</span>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon" style="background:linear-gradient(135deg,#f7971e,#ffd200);"><i class="fas fa-database"></i></div>
+                    <div class="cert-body">
+                        <h4>SQL &amp; Database Design</h4>
+                        <span>HackerRank — Gold Badge</span>
+                    </div>
+                    <span class="cert-badge">Completed</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- GITHUB STATS -->
+<section class="github-stats fade-in" id="github">
+    <div class="section-inner">
+        <div class="section-label">My activity</div>
+        <h2 class="section-title">GitHub Stats</h2>
+        <div class="github-container">
+            <img src="https://github-readme-stats.vercel.app/api?username=Suhas-H-N&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=6366f1&icon_color=6366f1&text_color=a0aec0" alt="Suhas GitHub Stats">
+            <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Suhas-H-N&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=6366f1&text_color=a0aec0" alt="Top Languages">
+        </div>
+        <div class="github-extra">
+            <img src="https://github-readme-streak-stats.herokuapp.com/?user=Suhas-H-N&theme=tokyonight&hide_border=true&background=0d1117&ring=6366f1&fire=6366f1&currStreakLabel=6366f1" alt="GitHub Streak">
+        </div>
+        <div class="github-links">
+            <a href="https://github.com/Suhas-H-N" target="_blank" rel="noopener" class="btn-primary">
+                <i class="fab fa-github"></i> Visit My GitHub
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact fade-in" id="contact">
+    <div class="section-inner">
+        <div class="section-label">Get in touch</div>
+        <h2 class="section-title">Contact Me</h2>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Let's work together</h3>
+                <p>I'm currently open to internship opportunities, freelance projects, and collaborative work. If you have a cool idea or an open role, feel free to reach out!</p>
+                <div class="contact-items">
+                    <a href="mailto:suhassuhas3335@gmail.com" class="contact-item">
+                        <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="ci-text">
+                            <span>Email</span>
+                            <strong>suhassuhas3335@gmail.com</strong>
+                        </div>
+                    </a>
+                    <a href="https://www.linkedin.com/in/suhas-h-n-987a432a/" target="_blank" rel="noopener" class="contact-item">
+                        <div class="ci-icon"><i class="fab fa-linkedin-in"></i></div>
+                        <div class="ci-text">
+                            <span>LinkedIn</span>
+                            <strong>suhas-h-n-987a432a</strong>
+                        </div>
+                    </a>
+                    <a href="https://github.com/Suhas-H-N" target="_blank" rel="noopener" class="contact-item">
+                        <div class="ci-icon"><i class="fab fa-github"></i></div>
+                        <div class="ci-text">
+                            <span>GitHub</span>
+                            <strong>Suhas-H-N</strong>
+                        </div>
+                    </a>
+                    <div class="contact-item">
+                        <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="ci-text">
+                            <span>Location</span>
+                            <strong>Bengaluru, Karnataka, India</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="availability-card">
+                    <div class="avail-dot"></div>
+                    <div>
+                        <strong>Available for Opportunities</strong>
+                        <p>Open to internships, part-time roles, and collaborations. Typically respond within 24 hours.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form id="contact-form" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="from_name">Your Name</label>
+                            <input type="text" id="from_name" name="from_name" class="form-control" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="from_email">Your Email</label>
+                            <input type="email" id="from_email" name="from_email" class="form-control" placeholder="john@example.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" class="form-control" placeholder="Internship Opportunity / Collaboration" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" class="form-control" placeholder="Tell me about the opportunity or project..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                    <div class="form-status" id="formStatus"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-brand">Suhas H N</div>
+        <div class="footer-tagline">CS Student · Full-Stack Developer · AI/ML Enthusiast</div>
+        <div class="footer-socials">
+            <a href="https://github.com/Suhas-H-N" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/suhas-h-n-987a432a/" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="mailto:suhassuhas3335@gmail.com" class="social-icon" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="#github">GitHub</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="footer-copy">
+            &copy; 2025 Suhas H N. Built with <span class="heart">&hearts;</span> in Bengaluru, India.
+        </div>
+    </div>
 </footer>
 
-<!-- ================= SCRIPT ================= -->
-<script src="script.js"></script>
+<!-- ADMIN LOGIN MODAL -->
+<div class="modal" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+        <button class="modal-close" id="modalClose" aria-label="Close modal"><i class="fas fa-times"></i></button>
+        <div class="modal-icon"><i class="fas fa-lock"></i></div>
+        <h2 id="modalTitle">Admin Login</h2>
+        <p class="modal-sub">Enter credentials to access the dashboard.</p>
+        <form id="adminForm" novalidate>
+            <div class="form-group">
+                <label for="adminUser">Username</label>
+                <input type="text" id="adminUser" class="form-control" placeholder="admin" autocomplete="username" required>
+            </div>
+            <div class="form-group">
+                <label for="adminPass">Password</label>
+                <input type="password" id="adminPass" class="form-control" placeholder="••••••••" autocomplete="current-password" required>
+            </div>
+            <p class="login-error" id="loginError">Invalid credentials. Please try again.</p>
+            <button type="submit" class="submit-btn"><i class="fas fa-sign-in-alt"></i> Login</button>
+        </form>
+    </div>
+</div>
 
+<!-- ADMIN DASHBOARD -->
+<div class="admin-dashboard" id="adminDashboard" style="display:none;" role="dialog" aria-modal="true">
+    <div class="dash-inner">
+        <div class="dash-header">
+            <h2><i class="fas fa-chart-line"></i> Dashboard</h2>
+            <button class="btn-primary" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+        <div class="dash-stats">
+            <div class="dash-card">
+                <div class="dash-icon" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);"><i class="fas fa-download"></i></div>
+                <h3 id="dashDownloads">0</h3>
+                <p>Resume Downloads</p>
+            </div>
+            <div class="dash-card">
+                <div class="dash-icon" style="background:linear-gradient(135deg,#43e97b,#38f9d7);"><i class="fas fa-envelope"></i></div>
+                <h3 id="dashMessages">0</h3>
+                <p>Messages Received</p>
+            </div>
+            <div class="dash-card">
+                <div class="dash-icon" style="background:linear-gradient(135deg,#f7971e,#ffd200);"><i class="fas fa-eye"></i></div>
+                <h3 id="dashVisits">0</h3>
+                <p>Page Visits</p>
+            </div>
+            <div class="dash-card">
+                <div class="dash-icon" style="background:linear-gradient(135deg,#FF6B6B,#ee0979);"><i class="fas fa-clock"></i></div>
+                <h3 id="dashTime">—</h3>
+                <p>Last Visit</p>
+            </div>
+        </div>
+        <div class="dash-messages">
+            <h3 style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:18px;"><i class="fas fa-inbox" style="color:var(--accent);margin-right:8px;"></i>Message Log</h3>
+            <div class="message-log" id="messageLog">
+                <p style="color:var(--text-muted);font-size:0.88rem;">No messages yet.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>emailjs.init("n-Vlcpzzg1shAhVfD");</script>
 <script>
-// CONTACT FORM FIX
-const form = document.getElementById('contact-form');
-const statusText = document.getElementById('formStatus');
-
-if (form) {
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
-        .then(() => {
-            statusText.innerText = "Message sent successfully!";
-            form.reset();
-        })
-        .catch(() => {
-            statusText.innerText = "Failed to send message.";
-        });
-    });
-}
-
-// MOBILE MENU FIX
-const menuToggle = document.getElementById('menuToggle');
-const navLinks = document.querySelector('.nav-links');
-
-if (menuToggle) {
-    menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-    });
-}
-
-// SKILL BAR ANIMATION
-document.querySelectorAll('.bar-fill').forEach(bar => {
-    let width = bar.getAttribute('data-width');
-    bar.style.width = width + "%";
+// Quick Actions Dropdown
+document.getElementById('quickActions').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('dropdownMenu').classList.toggle('show');
 });
-
-// PROJECT FILTER
-const filterBtns = document.querySelectorAll('.filter-btn');
-const projects = document.querySelectorAll('.project-card');
-
-filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        let filter = btn.getAttribute('data-filter');
-
-        projects.forEach(project => {
-            if (filter === 'all' || project.getAttribute('data-category') === filter) {
-                project.style.display = "block";
-            } else {
-                project.style.display = "none";
-            }
-        });
-    });
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-dropdown')) {
+        document.getElementById('dropdownMenu').classList.remove('show');
+    }
 });
+// Live Status
+function updateLiveStatus() {
+    var el = document.getElementById('lastUpdate');
+    if (el) el.textContent = new Date().toLocaleTimeString();
+}
+updateLiveStatus();
+setInterval(updateLiveStatus, 30000);
 </script>
-
+<script src="script.js"></script>
 </body>
 </html>
