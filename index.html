@@ -3,312 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Suhas H N — CS Student & Aspiring Software Developer. Full-stack, AI/ML, Python. Bengaluru, India.">
-    <meta name="keywords" content="Suhas H N, portfolio, software developer, full stack, AI ML, Python, React, VTU">
-    <meta property="og:title" content="Suhas H N | Portfolio">
-    <meta property="og:description" content="CS Student & Aspiring Software Developer from Bengaluru">
-    <meta property="og:type" content="website">
-    <title>Suhas H N | CS Student & Software Developer</title>
+    <title>Suhas H N | Portfolio</title>
 
-    <!-- NEW: PWA Manifest & Service Worker -->
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#6366f1">
-    <link rel="apple-touch-icon" href="images/profile.png">
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome (FIXED) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+    <script>
+        (function(){
+            emailjs.init("YOUR_PUBLIC_KEY"); // 🔥 Replace with your key
+        })();
+    </script>
 </head>
+
 <body>
 
-<!-- Scroll progress bar -->
-<div class="scroll-progress" id="scrollProgress"></div>
+<!-- ================= NAVBAR ================= -->
+<header>
+    <nav class="navbar">
+        <h2 class="logo">Suhas</h2>
 
-<!-- NEW: Live Visitor Counter -->
-<div class="visitor-counter" id="visitorCounter">
-    <i class="fas fa-users"></i>
-    <span id="visitorCount">0</span> visitors today
-</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
 
-<!-- Back to top -->
-<button class="back-to-top" id="backToTop" title="Back to top" aria-label="Back to top">
-    <i class="fas fa-chevron-up"></i>
-</button>
-
-<!-- ═══════════════ NAVBAR ═══════════════ -->
-<nav class="navbar" id="navbar">
-    <div class="nav-brand"><i class="fas fa-code"></i> SUHAS H N</div>
-    <div class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></div>
-    <ul class="nav-links" id="navLinks">
-        <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
-        <li><a href="#experience"><i class="fas fa-briefcase"></i> Experience</a></li>
-        <li><a href="#skills"><i class="fas fa-tools"></i> Skills</a></li>
-        <li><a href="#projects"><i class="fas fa-layer-group"></i> Projects</a></li>
-        <li><a href="#education"><i class="fas fa-graduation-cap"></i> Education</a></li>
-        <li><a href="#github"><i class="fab fa-github"></i> GitHub</a></li>
-        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
-        <!-- NEW: Quick Actions Dropdown -->
-        <li class="nav-dropdown">
-            <a href="#" id="quickActions"><i class="fas fa-rocket"></i> Quick Actions <i class="fas fa-chevron-down"></i></a>
-            <ul class="dropdown-menu" id="dropdownMenu">
-                <li><a href="assets/resume.pdf" download><i class="fas fa-download"></i> Download Resume</a></li>
-                <li><a href="#projects"><i class="fas fa-layer-group"></i> Latest Projects</a></li>
-                <li><a href="mailto:suhassuhas3335@gmail.com?subject=Internship%20Opportunity"><i class="fas fa-envelope"></i> Email Me</a></li>
-                <li><a href="https://github.com/Suhas-H-N?tab=repositories" target="_blank"><i class="fab fa-github"></i> View All Repos</a></li>
-            </ul>
-        </li>
-        <li><a href="#" id="adminLogin"><i class="fas fa-cog"></i></a></li>
-    </ul>
-    <button id="themeToggle" class="theme-btn" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
-</nav>
-
-<!-- ═══════════════ HERO ═══════════════ -->
-<section class="hero" id="home">
-    <div class="hero-orbs">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
-    </div>
-    <div class="hero-inner">
-        <div class="hero-text">
-            <div class="hero-badge">
-                <div class="badge-dot"></div>
-                Available for internships &amp; collab
-            </div>
-            <h1>Hi, I'm<br><span class="gradient-text">Suhas H N</span></h1>
-            <!-- typing effect injected by JS -->
-            <p class="hero-desc">Computer Science &amp; Engineering student at VTU, Bengaluru. Building full-stack apps, AI/ML tools, and everything in between.</p>
-            <div class="hero-buttons">
-                <a href="assets/resume.pdf" download class="btn-primary">
-                    <i class="fas fa-download"></i> Download Resume
-                </a>
-                <a href="#projects" class="btn-secondary"><i class="fas fa-arrow-right"></i> View Projects</a>
-            </div>
-            <div class="hero-socials">
-                <span>Find me on</span>
-                <a href="https://github.com/Suhas-H-N" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/suhas-h-n-987a432a/" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="mailto:suhassuhas3335@gmail.com" class="social-icon" aria-label="Email"><i class="fas fa-envelope"></i></a>
-            </div>
-            <!-- NEW: Live Status Indicator -->
-            <div class="live-status">
-                <div class="status-dot online"></div>
-                <span>Live & Online</span>
-                <small>Last updated: <span id="lastUpdate"></span></small>
-            </div>
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
         </div>
-        <div class="hero-img-wrap">
-            <div class="hero-img-ring"></div>
-            <div class="hero-img">
-                <img src="images/profile.png" alt="Suhas H N" loading="eager"
-                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                <div class="img-fallback">SH</div>
-            </div>
-            <!-- Floating tech chips -->
-            <div class="float-chip chip-1"><i class="fab fa-python"></i> Python</div>
-            <div class="float-chip chip-2"><i class="fas fa-brain"></i> AI/ML</div>
-            <div class="float-chip chip-3"><i class="fab fa-react"></i> React</div>
-        </div>
-    </div>
-    <a href="#about" class="scroll-hint" aria-label="Scroll down"><i class="fas fa-chevron-down"></i></a>
+    </nav>
+</header>
+
+<!-- ================= HOME ================= -->
+<section id="home" class="section">
+    <h1>Hello, I'm <span>Suhas H N</span></h1>
+    <p>AI Developer | Web Developer</p>
 </section>
 
-<!-- NEW: Skills Radar Chart Section (Before About) -->
-<section class="skills-radar fade-in">
-    <canvas id="skillsRadar" width="400" height="400"></canvas>
+<!-- ================= ABOUT ================= -->
+<section id="about" class="section">
+    <h2>About Me</h2>
+    <p>I am passionate about building AI and web applications.</p>
 </section>
 
-<!-- All existing sections remain EXACTLY the same -->
-<!-- ═══════════════ ABOUT ═══════════════ -->
-<section class="about fade-in" id="about">
-    <div class="section-inner">
-        <div class="section-label">Who I am</div>
-        <h2 class="section-title">About Me</h2>
-        <div class="about-grid">
-            <div class="about-text">
-                <p>Passionate Computer Science student from Bengaluru, diving deep into full-stack web development, AI/ML projects, and 3D image processing. I love turning complex ideas into clean, functional code.</p>
-                <p>Currently in my final year at VTU. Recently built a FastAPI drag-drop 3D image maker and a full-stack Notes App. Always hunting internships and open to cool collaborations!</p>
-                <p>When I'm not coding, you'll find me exploring open-source projects, brushing up on DSA, or contributing on GitHub.</p>
-                <a href="assets/resume.pdf" download class="btn-primary" style="margin-top:18px;display:inline-flex;"><i class="fas fa-file-alt"></i> Download Resume</a>
-            </div>
-            <div class="about-right">
-                <div class="about-stats">
-                    <div class="stat-box">
-                        <span class="stat-number" data-target="10">0</span><span class="stat-plus">+</span>
-                        <span class="stat-label">Projects</span>
-                    </div>
-                    <div class="stat-box">
-                        <span class="stat-number" data-target="15">0</span><span class="stat-plus">+</span>
-                        <span class="stat-label">Skills</span>
-                    </div>
-                    <div class="stat-box">
-                        <a href="https://github.com/Suhas-H-N" target="_blank" rel="noopener">
-                            <span class="stat-number" data-target="50">0</span><span class="stat-plus">+</span>
-                            <span class="stat-label">GitHub Commits</span>
-                        </a>
-                    </div>
-                </div>
-                <!-- Quick info card -->
-                <div class="info-card">
-                    <div class="info-row"><i class="fas fa-map-marker-alt"></i><span>Bengaluru, Karnataka, India</span></div>
-                    <div class="info-row"><i class="fas fa-university"></i><span>VTU — CSE Final Year</span></div>
-                    <div class="info-row"><i class="fas fa-code-branch"></i><span>Open to Internships</span></div>
-                    <div class="info-row"><i class="fas fa-language"></i><span>English · Kannada · Hindi</span></div>
-                </div>
-            </div>
+<!-- ================= SKILLS ================= -->
+<section id="skills" class="section">
+    <h2>Skills</h2>
+
+    <div class="skill">
+        <p>HTML</p>
+        <div class="bar">
+            <div class="bar-fill" data-width="90"></div>
+        </div>
+    </div>
+
+    <div class="skill">
+        <p>CSS</p>
+        <div class="bar">
+            <div class="bar-fill" data-width="85"></div>
+        </div>
+    </div>
+
+    <div class="skill">
+        <p>JavaScript</p>
+        <div class="bar">
+            <div class="bar-fill" data-width="80"></div>
         </div>
     </div>
 </section>
 
-<!-- [ALL OTHER SECTIONS EXACTLY SAME - Experience, Skills, Projects, Education, GitHub Stats, Contact, Footer, Admin Modal, Admin Dashboard] -->
+<!-- ================= PROJECTS ================= -->
+<section id="projects" class="section">
+    <h2>Projects</h2>
 
-<!-- Continue with ALL existing content exactly as provided... -->
+    <div class="filters">
+        <button class="filter-btn" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+        <button class="filter-btn" data-filter="ai">AI</button>
+    </div>
 
-<!-- ═══════════════ EXPERIENCE ═══════════════ (keeping all exactly same) -->
-<section class="experience fade-in" id="experience">
-    <!-- ... existing experience content exactly same ... -->
+    <div class="project-container">
+        <div class="project-card" data-category="web">
+            <h3>Portfolio Website</h3>
+            <p>Personal portfolio built using HTML, CSS, JS</p>
+        </div>
+
+        <div class="project-card" data-category="ai">
+            <h3>AI Project</h3>
+            <p>Machine learning based application</p>
+        </div>
+    </div>
 </section>
 
-<!-- ═══════════════ SKILLS ═══════════════ (keeping all exactly same) -->
-<section class="skills fade-in" id="skills">
-    <!-- ... existing skills content exactly same ... -->
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="section">
+    <h2>Contact Me</h2>
+
+    <form id="contact-form">
+        <input type="text" name="from_name" placeholder="Your Name" required>
+        <input type="email" name="from_email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+
+        <button type="submit" id="submitBtn">Send Message</button>
+        <p id="formStatus"></p>
+    </form>
 </section>
 
-<!-- ═══════════════ PROJECTS ═══════════════ (keeping all exactly same) -->
-<section class="projects fade-in" id="projects">
-    <!-- ... existing projects content exactly same ... -->
-</section>
-
-<!-- ═══════════════ EDUCATION ═══════════════ (keeping all exactly same) -->
-<section class="education fade-in" id="education">
-    <!-- ... existing education content exactly same ... -->
-</section>
-
-<!-- ═══════════════ GITHUB STATS ═══════════════ (keeping all exactly same) -->
-<section class="github-stats fade-in" id="github">
-    <!-- ... existing github content exactly same ... -->
-</section>
-
-<!-- ═══════════════ CONTACT ═══════════════ (keeping all exactly same) -->
-<section class="contact fade-in" id="contact">
-    <!-- ... existing contact content exactly same ... -->
-</section>
-
-<!-- ═══════════════ FOOTER ═══════════════ (keeping all exactly same) -->
-<footer class="footer">
-    <!-- ... existing footer content exactly same ... -->
+<!-- ================= FOOTER ================= -->
+<footer>
+    <p>© 2026 Suhas H N</p>
 </footer>
 
-<!-- All modals exactly same -->
-<!-- Admin Modal & Dashboard exactly same -->
+<!-- ================= SCRIPT ================= -->
+<script src="script.js"></script>
 
-<!-- Enhanced Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<script>emailjs.init("n-Vlcpzzg1shAhVfD");</script>
-
-<!-- NEW: Enhanced JavaScript with 8 New Features -->
 <script>
-// Register Service Worker for PWA (NEW FEATURE 1)
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js');
-}
+// CONTACT FORM FIX
+const form = document.getElementById('contact-form');
+const statusText = document.getElementById('formStatus');
 
-// Live Visitor Counter (NEW FEATURE 2)
-function updateVisitorCount() {
-    const count = localStorage.getItem('visitorCount') || 0;
-    const today = new Date().toDateString();
-    const todayCount = localStorage.getItem('todayCount') || 0;
-    document.getElementById('visitorCount').textContent = todayCount;
-}
+if (form) {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
 
-// Quick Actions Dropdown (NEW FEATURE 3)
-document.getElementById('quickActions').addEventListener('click', (e) => {
-    e.preventDefault();
-    document.getElementById('dropdownMenu').classList.toggle('show');
-});
-
-// Live Status Indicator (NEW FEATURE 4)
-function updateLiveStatus() {
-    document.getElementById('lastUpdate').textContent = new Date().toLocaleTimeString();
-}
-setInterval(updateLiveStatus, 30000);
-
-// Skills Radar Chart (NEW FEATURE 5)
-function drawRadarChart() {
-    const canvas = document.getElementById('skillsRadar');
-    const ctx = canvas.getContext('2d');
-    // Simple radar chart drawing logic
-    ctx.beginPath();
-    ctx.arc(200, 200, 150, 0, 2 * Math.PI);
-    ctx.strokeStyle = '#6366f1';
-    ctx.lineWidth = 2;
-    ctx.stroke();
-}
-
-// Copy to Clipboard (NEW FEATURE 6)
-function addCopyButtons() {
-    const emails = document.querySelectorAll('.ci-text strong');
-    emails.forEach(email => {
-        const copyBtn = document.createElement('button');
-        copyBtn.innerHTML = '<i class="fas fa-copy"></i>';
-        copyBtn.className = 'copy-btn';
-        copyBtn.onclick = () => {
-            navigator.clipboard.writeText(email.textContent);
-            copyBtn.innerHTML = '<i class="fas fa-check"></i>';
-            setTimeout(() => copyBtn.innerHTML = '<i class="fas fa-copy"></i>', 2000);
-        };
-        email.parentElement.appendChild(copyBtn);
+        emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+        .then(() => {
+            statusText.innerText = "Message sent successfully!";
+            form.reset();
+        })
+        .catch(() => {
+            statusText.innerText = "Failed to send message.";
+        });
     });
 }
 
-// Auto-hide Navbar on Scroll (NEW FEATURE 7)
-let lastScroll = 0;
-window.addEventListener('scroll', () => {
-    const navbar = document.getElementById('navbar');
-    if (window.scrollY > lastScroll && window.scrollY > 100) {
-        navbar.style.transform = 'translateY(-100%)';
-    } else {
-        navbar.style.transform = 'translateY(0)';
-    }
-    lastScroll = window.scrollY;
+// MOBILE MENU FIX
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.querySelector('.nav-links');
+
+if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+}
+
+// SKILL BAR ANIMATION
+document.querySelectorAll('.bar-fill').forEach(bar => {
+    let width = bar.getAttribute('data-width');
+    bar.style.width = width + "%";
 });
 
-// Typing Sound Effect (NEW FEATURE 8)
-const typingSounds = [
-    'data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAo',
-    // Add more sound data or use Web Audio API
-];
+// PROJECT FILTER
+const filterBtns = document.querySelectorAll('.filter-btn');
+const projects = document.querySelectorAll('.project-card');
 
-// Initialize new features
-document.addEventListener('DOMContentLoaded', () => {
-    updateVisitorCount();
-    drawRadarChart();
-    addCopyButtons();
-    updateLiveStatus();
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        let filter = btn.getAttribute('data-filter');
+
+        projects.forEach(project => {
+            if (filter === 'all' || project.getAttribute('data-category') === filter) {
+                project.style.display = "block";
+            } else {
+                project.style.display = "none";
+            }
+        });
+    });
 });
 </script>
 
-<!-- NEW: PWA Manifest (save as manifest.json) -->
-<script>
-const manifest = {
-    "name": "Suhas H N - Portfolio",
-    "short_name": "SuhasHN",
-    "start_url": "/",
-    "display": "standalone",
-    "background_color": "#0f0f23",
-    "theme_color": "#6366f1",
-    "icons": [
-        {
-            "src": "images/profile.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        }
-    ]
-};
-</script>
-
-<script src="script.js"></script>
 </body>
 </html>
