@@ -138,4 +138,4 @@ This project is [MIT](LICENSE) licensed - feel free to use & modify!
 ---
 
 **Built with ❤️ in Bengaluru, India**  
-*Last Updated: April 25, 2026*
+*Last Updated:  2026*
